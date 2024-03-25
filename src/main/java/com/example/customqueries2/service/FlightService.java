@@ -36,7 +36,7 @@ public class FlightService {
         return randomString.substring(22);
     }
 
-    public List<Flight> getAllOrderFromAirport() {
+    public List<Flight> getAllOrderByFromAirport() {
         List<Flight> flights = flightRepository.findAllByOrderByFromAirport();
 
         return flights;

@@ -24,8 +24,8 @@ public class FlightController {
     }
 
     @GetMapping("get-all")
-    public ResponseEntity<List<Flight>> getAllOrderFromAirport() {
-        List<Flight> flights = flightService.getAllOrderFromAirport();
+    public ResponseEntity<List<Flight>> getAllOrderByFromAirport() {
+        List<Flight> flights = flightService.getAllOrderByFromAirport();
 
         return ResponseEntity.ok().body(flights);
     }
