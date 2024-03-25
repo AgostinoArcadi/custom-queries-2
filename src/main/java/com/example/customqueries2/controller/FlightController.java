@@ -4,6 +4,7 @@ import com.example.customqueries2.entity.Flight;
 import com.example.customqueries2.entity.StatusEnum;
 import com.example.customqueries2.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +25,8 @@ public class FlightController {
     }
 
     @GetMapping("get-all")
-    public ResponseEntity<List<Flight>> getAllOrderByFromAirport() {
-        List<Flight> flights = flightService.getAllOrderByFromAirport();
+    public ResponseEntity<Page<Flight>> getAllOrderByFromAirport(@RequestParam int page,@RequestParam int size) {
+        Page<Flight> flights = flightService.getAllOrderByFromAirport(page, size);
 
         return ResponseEntity.ok().body(flights);
     }

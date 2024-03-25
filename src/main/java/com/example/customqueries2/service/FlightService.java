@@ -4,6 +4,9 @@ import com.example.customqueries2.entity.Flight;
 import com.example.customqueries2.entity.StatusEnum;
 import com.example.customqueries2.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -36,8 +39,9 @@ public class FlightService {
         return randomString.substring(22);
     }
 
-    public List<Flight> getAllOrderByFromAirport() {
-        List<Flight> flights = flightRepository.findAllByOrderByFromAirport();
+    public Page<Flight> getAllOrderByFromAirport(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Flight> flights = flightRepository.findAllByOrderByFromAirport(pageable);
 
         return flights;
     }
